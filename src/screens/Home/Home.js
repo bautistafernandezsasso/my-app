@@ -1,29 +1,28 @@
-import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
+import { Text, View, FlatList } from 'react-native'
 import React, { Component } from 'react'
-import {auth} from '../../firebase/config'
-class Login extends Component {
+import {products} from '../../api/allProducts'
+import Post from '../../components/Post'
 
+class Home extends Component {
     constructor(){
         super()
         this.state={
-            mail:'',
-            pass:'',
-            logueado: false
+            info: products
         }
     }
-
-    
-
-  render() {
-    return (
-      <View>
-        <Text></Text>
-       
-      </View>
-    )
-  }
+  
+    render() {
+        return (
+        <View>
+            <Text>Home</Text>
+            <FlatList
+                data={this.state.info}
+                keyExtractor={(item)=> item.id.toString()}
+                renderItem={({item}) => <Post info={item} />}
+            />
+        </View>
+        )
+    }
 }
 
-
-
-export default Login
+export default Home

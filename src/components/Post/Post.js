@@ -24,7 +24,7 @@ componentDidMount(){
 }
 
 funcionLikear(){
-    db.collection()
+    db.collection('posts')
         .doc(this.props.postData.id)
         .update({
             Likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
@@ -39,7 +39,7 @@ funcionLikear(){
 }
 
 funcionDislikear(){
-    db.collection()
+    db.collection('posts')
         .doc(this.props.postData.id)
         .update({
             Likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)

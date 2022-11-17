@@ -1,28 +1,55 @@
 import { Text, View, FlatList } from 'react-native'
+import {auth, db} from '../firebase/config';
 import React, { Component } from 'react'
-import {products} from '../../api/allProducts'
 import Post from '../../components/Post'
 
 class Home extends Component {
     constructor(){
         super()
         this.state={
-            info: products
+            posts:[]
         }
+    }
+
+    componentDidMount(){
+        db.collection('posts').orderBy('createdAt', 'desc').onSnapshot(
+            docs => {
+                let posts = [];
+                docs.forEach( doc => {
+                    posts.push({
+                        id: doc.id,
+                        data: doc.data()
+                    })
+                    this.setState({
+                        posteos: posts
+                    })
+                })
+                
+            }
+        )
     }
   
     render() {
         return (
-        <View>
+        <View 
+        style={styles.container}
+        >
             <Text>Home</Text>
             <FlatList
-                data={this.state.info}
-                keyExtractor={(item)=> item.id.toString()}
-                renderItem={({item}) => <Post info={item} />}
+                data={this.state.allPosts}
+                keyExtractor={(posteo)=> posteo.id.toString()}
+                renderItem={({posteo}) => <Post navigation={this.props.navigation} id={posteo.id} data={posteo.data} />}
             />
         </View>
         )
     }
 }
+
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    }
+})
 
 export default Home

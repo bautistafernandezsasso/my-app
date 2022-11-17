@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {auth, db} from '../firebase/config'
 import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
-import Camara from '../components/Camara'
+import Camara from '../../components/Camara/Camara'
 import {TextInput} from 'react-native-web'
 
 class CreatePost extends Component {
@@ -38,12 +38,31 @@ class CreatePost extends Component {
 
 
 
-  render() {
-    return (
-      <View>
-        <Text>CreatePost</Text>
-      </View>
-    )
+    render() {
+      return (
+
+          <View> 
+          {
+          <View>
+              <Text> Nuevo Posteo </Text>
+
+              <View>
+                  <TextInput
+                      placeholder='Texto Posteo'
+                      keyboardType='default'
+                      onChangeText={text => this.setState({ textoPosteo: text })}
+                      value={this.state.textoPosteo}
+                  />
+
+                  <TouchableOpacity onPress={() => this.createPost(this.state.textoPosteo, this.state.photo)}>
+                      <Text> Done </Text>
+                  </TouchableOpacity> 
+              </View> 
+          </View>
+          }
+          </View>
+
+      )
   }
 }
 

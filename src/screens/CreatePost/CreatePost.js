@@ -14,14 +14,15 @@ class CreatePost extends Component {
             likes: [],
             comentarios:[]
         }
+        
     };
     createPost(descripcion, foto){
         db.collection('posts').add({
                 owner: auth.currentUser.email, //deberia ser el usuario registrado. auth.currentUser
-                description: description,
-                photo: photo,
-                likes: this.state.likes,
-                comentarios: this.state.comentarios,
+                description: text,
+                photo: this.state.foto,
+                likes: [],
+                comentarios: [],
                 createdAt: Date.now()
             })
             .then(() => {
@@ -34,6 +35,12 @@ class CreatePost extends Component {
             })
             .catch( e => console.log(e))
     }
+    subirPosteo(url){
+      this.setState({
+          fotoUrl:url,
+          mostrarCamara:false
+      })
+  }
 
 
 
@@ -41,29 +48,34 @@ class CreatePost extends Component {
     render() {
       return (
 
-          <View> 
-          {
-          <View>
-              <Text> Nuevo Posteo </Text>
-
-              <View>
-                  <TextInput
-                      placeholder='Texto Posteo'
-                      keyboardType='default'
-                      onChangeText={text => this.setState({ textoPosteo: text })}
-                      value={this.state.textoPosteo}
-                  />
-
-                  <TouchableOpacity onPress={() => this.createPost(this.state.textoPosteo, this.state.photo)}>
-                      <Text> Done </Text>
-                  </TouchableOpacity> 
-              </View> 
-          </View>
-          }
-          </View>
+        <View style={styles.container}>
+        {
+            this.state.mostrarCamara ?
+            <Camara
+            subirPosteo={(url)=> this.subirPosteo(url)}
+            /> :
+            <>
+                <TextInput
+                placeholder='Descripcion'
+                onChangeText={text => this.setState({descripcionDelPosteo: text})}
+                value={this.state.descripcionDelPosteo}
+                keyboardType='default'
+                style={styles.input}
+                />
+                <TouchableOpacity onPress={()=> this.enviarPost(this.state.descripcionDelPosteo)}>
+                    <Text>Enviar post</Text>
+                </TouchableOpacity>
+            </>
+        }
+    </View>
 
       )
   }
 }
+
+const styles = StyleSheet.create({
+  container:{
+      flex:1
+  }})
 
 export default CreatePost

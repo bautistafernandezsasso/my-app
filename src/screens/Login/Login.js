@@ -14,6 +14,15 @@ class Login extends Component {
         }
     }
 
+    componentDidMount(){
+        auth.onAuthStateChanged(user => {
+            if (user !== null) {
+                this.props.navigation.navigate('TabNavigation')    
+            }
+        })
+        
+    }
+
     loguear(mail, pass){
         auth.signInWithEmailAndPassword(mail, pass)
         .then( () => this.props.navigation.navigate('TabNavigation'))
@@ -21,7 +30,7 @@ class Login extends Component {
     }
 
   render() {
-    console.log(this.props)
+   // console.log(this.props)
     return (
       <View style={styles.container}>
         <Text>Login</Text>

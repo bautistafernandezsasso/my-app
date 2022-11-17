@@ -1,7 +1,7 @@
-import { Text, View, FlatList } from 'react-native'
-import {auth, db} from '../firebase/config';
+import { Text, View, FlatList, StyleSheet } from 'react-native'
+import {auth, db} from '../../firebase/config';
 import React, { Component } from 'react'
-import Post from '../../components/Post'
+import Post from '../../components/Post/Post'
 
 class Home extends Component {
     constructor(){
@@ -47,8 +47,8 @@ class Home extends Component {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
+    container:{
+        flex:1
     }
 })
 

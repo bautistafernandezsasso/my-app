@@ -1,6 +1,6 @@
 import { text, view} from 'react-native'
 import React, { Component } from 'react'
-import { db, auth } from '../../firebase/config'
+import { db, auth } from '../firebase/config'
 
 class Profile extends Component {
 

@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native'
 import React, { Component } from 'react'
-import {auth} from '../../firebase/config'
+import {auth} from '../firebase/config'
 
 
 class Login extends Component {

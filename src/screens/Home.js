@@ -1,5 +1,5 @@
 import { Text, View, FlatList, StyleSheet } from 'react-native'
-import {auth, db} from '../firebase/config';
+import {auth, db} from '../firebase/config;
 import React, { Component } from 'react'
 import Post from '../components/Post/Post'
 
@@ -14,9 +14,9 @@ class Home extends Component {
     componentDidMount(){
         db.collection('posts').orderBy('createdAt', 'desc').onSnapshot(
             docs => {
-                let posts = [];
+                let posteos = [];
                 docs.forEach( doc => {
-                    posts.push({
+                    posteos.push({
                         id: doc.id,
                         data: doc.data()
                     })

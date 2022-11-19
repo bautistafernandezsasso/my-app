@@ -1,13 +1,16 @@
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import MainNavigation from './src/Navigation/MainNavigation';
+import { auth } from './src/firebase/config';
+import { Component } from 'react';
 
 import Login from './src/screens/Login'
 import Home from './src/screens/Home'
 import Register from './src/screens/Register'
 import Profile from './src/screens/Profile'
 
-const Stack = createNativeStackNavigator();
+/*  const Stack = createNativeStackNavigator();
 
 function App() {
   return (
@@ -31,4 +34,20 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default App;*/
+
+export default class App extends Component {
+  
+  constructor(){
+    super()
+    this.state = {
+      initialScreen:'Login'
+    }
+  }
+  
+  render(){
+    return (
+        <MainNavigation initial={this.state.initialScreen} />
+    );
+  }
+}

@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React from 'react'
-import Home from '../screens/Home/Home'
+import Home from '../screens/Home'
 import {FontAwesome} from '@expo/vector-icons'
-import MyProfile from '../screens/MyProfile/MyProfile'
+import Profile from '../screens/Profile'
 
 const Tab = createBottomTabNavigator()
 
@@ -26,7 +26,8 @@ export default function TabNavigation() {
             headerShown:false
         }}
         />
-        <Tab.Screen name={'MyProfile'} component={MyProfile} />
+        <Tab.Screen name={'Profile'} component={Profile} />
     </Tab.Navigator>
   )
 }
+

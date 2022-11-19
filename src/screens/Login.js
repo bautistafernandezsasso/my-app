@@ -15,7 +15,7 @@ class Login extends Component {
     }
 
     componentDidMount(){
-        auth.onAuthStateChanged(user => {
+        auth.onAuthStateChanged(user => { 
             if (user !== null) {
                 this.props.navigation.navigate('TabNavigation')    
             }
@@ -25,7 +25,7 @@ class Login extends Component {
 
     loguear(mail, pass){
         auth.signInWithEmailAndPassword(mail, pass)
-        .then( () => this.props.navigation.navigate('TabNavigation'))
+        .then( resp => this.props.navigation.navigate('TabNavigation'))
         .catch(err => console.log(err))
     }
 

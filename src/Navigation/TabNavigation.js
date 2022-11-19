@@ -27,6 +27,17 @@ export default function TabNavigation() {
         }}
         />
         <Tab.Screen name={'Profile'} component={Profile} />
+
+        <Tab.Screen 
+        name='Search' 
+        component={Search}
+        options={{
+          tabBarIcon: () => <FontAwesome name="search" size={35} color={'black'}/>,
+          headerShown:false
+        }} 
+        />
+
+
     </Tab.Navigator>
   )
 }

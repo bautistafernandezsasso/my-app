@@ -3,8 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import React from 'react'
 import Home from '../screens/Home'
 import {FontAwesome} from '@expo/vector-icons'
-import Profile from '../screens/Profile'
-
+import Profile from '../screens/MyProfile'
+import Search from '../screens/Search'
 const Tab = createBottomTabNavigator()
 
 export default function TabNavigation() {

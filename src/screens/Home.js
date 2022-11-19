@@ -21,7 +21,7 @@ class Home extends Component {
                         data: doc.data()
                     })
                     this.setState({
-                        posteos: posts
+                        posts: posteos
                     })
                 })
                 

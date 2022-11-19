@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 import {auth, db} from '../../firebase/config';
-import firebase from 'firebase'
+import firebase from 'firebase';
+
 
 class Post extends Component{
 
@@ -9,6 +10,7 @@ class Post extends Component{
         super(props)
         this.state = {
             cantidadDeLikes: this.props.postData.data.likes.length,
+            comentario: "",
             comentarios: '',
             like: false,
             userFoto:'',

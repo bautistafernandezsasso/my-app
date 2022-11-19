@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity,  FlatList, } from 'react-native'
 import React, { Component } from 'react'
-import { auth, db } from '../../firebase/config'
+import { auth, db } from '../firebase/config'
 import { SearchBar } from 'react-native'
 
 class Search extends Component {
@@ -9,7 +9,7 @@ class Search extends Component {
         this.state={
           data: [],
           id:'', 
-          resultados: [],
+          results: [],
           users: [], 
           loading: false,
           busqueda: '',
@@ -28,11 +28,13 @@ class Search extends Component {
             
           })
           this.setState(
-            {data: resultados}
+            {users: resultados}
           )
          
         })
     }
+
+
 
     buscar(text){
     
@@ -41,8 +43,8 @@ class Search extends Component {
          return elm.data.username.toUpperCase().includes(text.toUpperCase())})
          console.log(usersFilter);
          this.setState({
-           users: usersFilter,
-           user: text,
+           results: usersFilter,
+           busqueda: text,
         })
     }
 
@@ -52,22 +54,21 @@ class Search extends Component {
         <View>
             <Text>Search</Text>
             <TextInput  
-              onChangeText={ text => this.setState( {busqueda:text} )}
+              onChangeText={ text => this.buscar( text )}
               placeholder='Ingresa tu busqueda'
               value={this.state.busqueda}>
             </TextInput>
-
-            <TouchableOpacity onPress={()=> this.buscar(this.state.busqueda)}>
-                <Text> Buscar</Text>
-            </TouchableOpacity>
-
-            <FlatList /*recorro el array*/
-              data={this.state.users}
-              keyExtractor={(item) => item.id}
-              renderItem= {({item}) => <Text>{item.data.username}</Text>}
     
-             />
-        
+    {
+        this.state.results.length  === 0? 
+        <Text>No se encontraron resultados</Text>
+        :
+        <FlatList 
+          data={this.state.users}
+          keyExtractor={(item) => item.id}
+          renderItem= {({item}) => <Text>{item.data.username}</Text>}
+         />
+    }
              
         </View>
     )

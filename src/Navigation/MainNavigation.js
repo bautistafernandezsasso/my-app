@@ -5,8 +5,8 @@ import React, {Component} from 'react'
 import Login from '../screens/Login'
 import Register from '../screens/Register'
 import TabNavigation from './TabNavigation'
-import { auth } from '../firebase/config'
 import Comments from '../screens/Comments'
+
 
 const Stack = createNativeStackNavigator()
 

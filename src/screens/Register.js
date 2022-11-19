@@ -1,7 +1,6 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
-import { auth, db } from '../firebase/config'
-
+import { auth , db} from "../firebase/config"
 class Register extends Component {
 
     constructor(){
@@ -34,7 +33,7 @@ class Register extends Component {
                     description: "",
                     foto: "",
                 })
-                this.props.navigation.navigate("login")
+                this.props.navigation.navigate("Login")
             }).catch(error =>console.log(error))
 
         }).catch( error => this.setState({error:error.message}))

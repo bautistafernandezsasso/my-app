@@ -15,7 +15,7 @@ class Perfil extends Component {
     }
 
     componentDidMount(){
-        db.collection('users').where("owner", "==", this.props.route.params.email).onSnapshot(
+        db.collection('users').where("owner", "==", auth.currentUser.email).onSnapshot(
             docs => {
                 let user = []
                 docs.forEach(doc => {
@@ -29,7 +29,7 @@ class Perfil extends Component {
                     })
                 })
             
-                db.collection('posts').where("owner", "==", this.props.route.params.email).onSnapshot(
+                db.collection('posts').where("owner", "==", auth.currentUser.email).onSnapshot(
                     docs => {
                         let post = []
                         docs.forEach(doc => {

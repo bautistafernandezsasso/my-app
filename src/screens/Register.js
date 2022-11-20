@@ -19,7 +19,7 @@ class Register extends Component {
         auth.createUserWithEmailAndPassword(email, password)
         .then( resp => {
             db.collection("users").add({
-                owner: email,
+                owner: auth.currentUser.email,
                 username: nombreusuario,
                 bio: description,
                 foto: foto,
@@ -32,12 +32,22 @@ class Register extends Component {
                     nombreusuario: "",
                     description: "",
                     foto: "",
+                    error: "",
+                    mostrarCamara: false
                 })
                 this.props.navigation.navigate("Login")
             }).catch(error =>console.log(error))
 
         }).catch( error => this.setState({error:error.message}))
     }
+    
+    onImageUpload(url){
+        this.setState({
+            foto: url,
+            mostrarCamara: false
+    
+        })
+      }
 
     render() {
         return (

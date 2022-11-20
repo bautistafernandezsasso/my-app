@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {auth, db} from '../firebase/config'
-import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
+import {View, Text, TouchableOpacity, StyleSheet, TextInput} from "react-native";
 import Camara from '../components/Camara/Camara'
-import {TextInput} from 'react-native-web'
 
 class CreatePost extends Component {
     constructor(){
@@ -29,6 +28,7 @@ class CreatePost extends Component {
             .then(() => {
                 this.setState({
                     description:'',
+                    foto: "",
                     likes: [],
                     comentarios: []
                 })
@@ -36,7 +36,7 @@ class CreatePost extends Component {
             })
             .catch( e => console.log(e))
     }
-    subirPosteo(url){
+    onImageUpload(url){
       this.setState({
           url:url,
           mostrarCamara:false
@@ -44,16 +44,13 @@ class CreatePost extends Component {
   }
 
 
-
-
     render() {
       return (
-
         <View style={styles.container}>
         {
             this.state.mostrarCamara ?
             <Camara
-            subirPosteo={(url)=> this.subirPosteo(url)}
+            subirPosteo={(url)=> this.onImageUpload(url)}
             /> :
             <>
                 <TextInput
@@ -63,7 +60,7 @@ class CreatePost extends Component {
                 keyboardType='default'
                 style={styles.input}
                 />
-                <TouchableOpacity onPress={()=> this.enviarPost(this.state.descripcionDelPosteo)}>
+                <TouchableOpacity onPress={()=> this.createPost(this.state.descripcion, this.state.foto )}>
                     <Text>Enviar post</Text>
                 </TouchableOpacity>
             </>

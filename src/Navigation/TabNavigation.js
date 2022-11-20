@@ -5,6 +5,8 @@ import Home from '../screens/Home'
 import {FontAwesome} from '@expo/vector-icons'
 import Profile from '../screens/MyProfile'
 import Search from '../screens/Search'
+import CreatePost from "../screens/CreatePost"
+
 const Tab = createBottomTabNavigator()
 
 export default function TabNavigation() {
@@ -21,6 +23,14 @@ export default function TabNavigation() {
         <Tab.Screen 
         name={'Home'} 
         component={Home}
+        options={{
+            tabBarIcon: () => <FontAwesome name='home' color={'red'} size={32} />,
+            headerShown:false
+        }}
+        />
+        <Tab.Screen 
+        name={'CreatePost'} 
+        component={CreatePost}
         options={{
             tabBarIcon: () => <FontAwesome name='home' color={'red'} size={32} />,
             headerShown:false

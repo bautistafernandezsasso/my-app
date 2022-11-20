@@ -5,8 +5,8 @@ import Post from '../components/Post/Post'
 
 class Perfil extends Component {
 
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
            usuario: [],
            posteos: [],

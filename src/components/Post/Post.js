@@ -86,12 +86,7 @@ render() {
             />
             
             <TouchableOpacity onPress={()=> this.props.navigation.navigate('Profile', {mail: this.state.usuario.data.owner})}>
-                                <Image 
-                                    style={styles.profile}
-                                    source={{uri:this.state.userFoto}}
-                                    resizeMode='auto' 
-                                />
-                            </TouchableOpacity>
+            </TouchableOpacity>
 
             {this.state.like ?
                 <TouchableOpacity onPress={() => this.unlike()}>

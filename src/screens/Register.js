@@ -1,6 +1,8 @@
 import { Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react'
 import { auth , db} from "../firebase/config"
+import Camara from "../components/Camara/Camara";
+
 class Register extends Component {
 
     constructor(){
@@ -19,7 +21,7 @@ class Register extends Component {
         auth.createUserWithEmailAndPassword(email, password)
         .then( resp => {
             db.collection("users").add({
-                owner: auth.currentUser.email,
+                owner: email,
                 username: nombreusuario,
                 bio: description,
                 foto: foto,
@@ -89,6 +91,17 @@ class Register extends Component {
                     onChangeText={text => this.setState({foto: text})}
                     value={this.state.foto}
                 />
+
+{
+                        this.state.mostrarCamara ?
+                        <View>
+                            <Camara onImageUpload={url => this.onImageUpload(url)} style={{width: "125vw", heigth: "125vh"}}/> 
+                        </View> 
+                        :
+                        <TouchableOpacity onPress={()=> this.setState({mostrarCamara: true})}>
+                            <Text>Subir foto de perfil</Text>
+                        </TouchableOpacity> 
+                    }
 
             { this.state.email =="" || this.state.nombreusuario =="" || this.state.password == "" ? 
             <View>

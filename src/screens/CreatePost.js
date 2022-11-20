@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {auth, db} from '../firebase/config'
 import {View, Text, TouchableOpacity, StyleSheet} from "react-native";
-import Camara from '../../components/Camara/Camara'
+import Camara from '../components/Camara/Camara'
 import {TextInput} from 'react-native-web'
 
 class CreatePost extends Component {
@@ -11,6 +11,7 @@ class CreatePost extends Component {
             descripcion:'',
             foto:'',
             mostrarCamara: true,
+            url:'',
             likes: [],
             comentarios:[]
         }
@@ -20,7 +21,7 @@ class CreatePost extends Component {
         db.collection('posts').add({
                 owner: auth.currentUser.email, //deberia ser el usuario registrado. auth.currentUser
                 description: text,
-                photo: this.state.foto,
+                photo: this.state.url,
                 likes: [],
                 comentarios: [],
                 createdAt: Date.now()
@@ -37,7 +38,7 @@ class CreatePost extends Component {
     }
     subirPosteo(url){
       this.setState({
-          fotoUrl:url,
+          url:url,
           mostrarCamara:false
       })
   }

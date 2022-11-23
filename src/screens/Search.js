@@ -46,7 +46,10 @@ class Search extends Component {
            results: usersFilter,
            busqueda: text,
         })
+
     }
+
+  
 
    render() {
   
@@ -60,7 +63,7 @@ class Search extends Component {
             </TextInput>
     
     {
-        this.state.results.length  === 0? 
+       this.state.resultados.length === 0 && this.state.buscando === true ? 
         <Text>No se encontraron resultados</Text>
         :
         <FlatList 

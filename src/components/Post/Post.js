@@ -89,11 +89,11 @@ render() {
             </TouchableOpacity>
 
             {this.state.like ?
-                <TouchableOpacity onPress={() => this.unlike()}>
+                <TouchableOpacity onPress={() => this.funcionDislikear()}>
                     <Text style={styles.data} >Dislike</Text>
                 </TouchableOpacity>
                 :
-                <TouchableOpacity onPress={() => this.like()}>
+                <TouchableOpacity onPress={() => this.funcionLikear()}>
                     <Text style={styles.data}>Like</Text>
                 </TouchableOpacity>
             }
@@ -108,7 +108,7 @@ render() {
                     onChangeText={(texto) => { this.setState({ comentario: texto }) }}
                     value={this.state.comentario}
                 />
-                <TouchableOpacity onPress={() => this.funcionComentar()}>
+                <TouchableOpacity onPress={() => this.addComment()}>
                     <Text style={styles.button} >Comentar</Text>
                 </TouchableOpacity>
             </View>

@@ -51,8 +51,8 @@ class Search extends Component {
    render() {
   
     return( 
-        <View>
-            <Text>Search</Text>
+        <View style={styles.container}>
+            <Text style={styles.text}>Search</Text>
             <TextInput  
               onChangeText={ text => this.buscar( text )}
               placeholder='Ingresa tu busqueda'
@@ -61,7 +61,7 @@ class Search extends Component {
 
     
     {
-        <FlatList 
+        <FlatList style={styles.text}
           data={this.state.users}
           keyExtractor={(item) => item.id}
           renderItem= {({item}) => <Text>{item.data.username}</Text>}
@@ -72,5 +72,32 @@ class Search extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems: 'center',
+    backgroundColor: 'rgb(16, 146, 201)',
+    paddingHorizontal:32
+},
+title:{
+    fontSize:30  
+},
+text:{
+    backgroundColor: 'rgba(204, 204 ,204, 0.1)',
+    fontSize: 20,
+    borderRadius: 10,
+    marginTop: 5
+ 
+},
+text2:{
+    backgroundColor: 'rgb(134, 192, 217)',
+    borderRadius: 10,
+    fontSize: 30,
+    marginTop: 5
+ 
+},
+})
 
 export default Search;

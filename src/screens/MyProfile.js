@@ -49,7 +49,7 @@ class Perfil extends Component {
         
     signOut(){
         auth.signOut()
-        this.props.navigation.navigate("Login")
+        .then(resp => this.props.navigation.navigate("Login"))
         .catch(error=> console.log(error))
     }
     
@@ -62,7 +62,7 @@ class Perfil extends Component {
 render(){
     return(
         <View>
-                                        <Text>{this.state.error}</Text>
+            <Text>{this.state.error}</Text>
             <View>
                 <View >
                     <View>

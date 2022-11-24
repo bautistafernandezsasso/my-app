@@ -15,8 +15,9 @@ class Perfil extends Component {
     }
 
     componentDidMount(){
-        db.collection('users').where("owner", "==", auth.currentUser.email).onSnapshot(
-            docs => {
+        db.collection('users')
+        .where("owner", "==", auth.currentUser.email)
+        .onSnapshot(docs => {
                 let user = []
                 docs.forEach(doc => {
                     user.push({
@@ -29,8 +30,9 @@ class Perfil extends Component {
                     })
                 })
             
-                db.collection('posts').where("owner", "==", auth.currentUser.email).onSnapshot(
-                    docs => {
+                db.collection('posts')
+                .where("owner", "==", auth.currentUser.email)
+                .onSnapshot( docs => {
                         let post = []
                         docs.forEach(doc => {
                             user.push({
@@ -48,6 +50,7 @@ class Perfil extends Component {
     signOut(){
         auth.signOut()
         this.props.navigation.navigate("Login")
+        .catch(error=> console.log(error))
     }
     
     

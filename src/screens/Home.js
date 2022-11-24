@@ -1,4 +1,4 @@
-import { Text, View, FlatList, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 import {db} from '../firebase/config'
 import React, { Component } from 'react'
 import Post from '../components/Post/Post'

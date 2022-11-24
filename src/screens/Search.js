@@ -46,10 +46,7 @@ class Search extends Component {
            results: usersFilter,
            busqueda: text,
         })
-
     }
-
-  
 
    render() {
   
@@ -61,11 +58,9 @@ class Search extends Component {
               placeholder='Ingresa tu busqueda'
               value={this.state.busqueda}>
             </TextInput>
+
     
     {
-       this.state.resultados.length === 0 && this.state.buscando === true ? 
-        <Text>No se encontraron resultados</Text>
-        :
         <FlatList 
           data={this.state.users}
           keyExtractor={(item) => item.id}

@@ -37,6 +37,10 @@ class MainNavigation extends Component {
                       name='Register'
                       component={Register}
                       />
+                       <Stack.Screen
+                      name='Comments'
+                      component={Comments}
+                      />
                   <Stack.Screen
                       name='TabNavigation'
                       component={TabNavigation}

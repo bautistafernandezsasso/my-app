@@ -49,7 +49,7 @@ class Camara extends Component{
                 refStorage.put(image) //Envio la foto transformada al storage
                     .then(()=>{
                         refStorage.getDownloadURL() //Obtengo la URL de firebase que voy a usar.
-                        .then((url) => this.props.onImageUpload(url)) //La guardo en el estado
+                        .then((url) => {console.log(this);this.props.onImageUpload(url)}) //La guardo en el estado
                     })
             })
             .catch(e => console.log(e))

@@ -50,7 +50,7 @@ class CreatePost extends Component {
         {
             this.state.mostrarCamara ?
             <Camara
-            subirPosteo={(url)=> this.props.onImageUpload(url)}
+            onImageUpload={(url)=> this.onImageUpload(url)}
             /> :
             <>
                 <TextInput

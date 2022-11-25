@@ -7,9 +7,9 @@ class Camara extends Component{
     constructor(props){
         super(props);
         this.state = {
-            permisos: false,
+            permissions: false,
             showCamera: true,
-            urlTemporal:''
+            photo:''
        }
 
         this.metodosDeCamara = ''
@@ -20,7 +20,7 @@ class Camara extends Component{
         Camera.requestCameraPermissionsAsync()
             .then( () => {
                 this.setState({
-                permisos: true
+                permissions: true
             })})
             .catch( e => console.log(e))
     }
@@ -32,7 +32,7 @@ class Camara extends Component{
         this.metodosDeCamara.takePictureAsync()
             .then( photo => {
                 this.setState({
-                    urlTemporal: photo.uri,
+                    photo: photo.uri,
                     showCamera: false
                 })
             })
@@ -41,7 +41,7 @@ class Camara extends Component{
 
     guardarFoto(){
         //Si toca aceptar se accede a este metodo
-        fetch(this.state.urlTemporal) //buscar la foto guardada temporalmente en el dispositivo
+        fetch(this.state.photo) //buscar la foto guardada temporalmente en el dispositivo
             .then(res => res.blob()) //La transformamos en formato binario.
             .then( image => { 
                 //Ya con la foto transformada hay que guardarla en el storage
@@ -65,7 +65,7 @@ class Camara extends Component{
             <View>
             {
                 //Si los permisos estan habilitados y se desea mostar la camara entonces se muestra la camara del usuario
-                this.state.permisos ? 
+                this.state.permissions ? 
                     this.state.showCamera ?
                     <View style={styles.cameraBody}>
                         <Camera
@@ -80,7 +80,7 @@ class Camara extends Component{
                     <View>
                         <Image 
                             style={styles.preview}
-                            source={{uri: this.state.urlTemporal}}
+                            source={{uri: this.state.photo}}
                             resizeMode='cover'
                         />
                         <TouchableOpacity style={styles.button} onPress={()=>this.cancelar()}>

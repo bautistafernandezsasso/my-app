@@ -7,7 +7,7 @@ class CreatePost extends Component {
     constructor(){
         super()
         this.state = {
-            descripcion:'',
+            description:'',
             foto:'',
             mostrarCamara: true,
             url:'',
@@ -16,11 +16,11 @@ class CreatePost extends Component {
         }
         
     };
-    createPost(descripcion, foto){
+    createPost(description, foto){
         db.collection('posts').add({
                 owner: auth.currentUser.email, //deberia ser el usuario registrado. auth.currentUser
-                description: text,
-                photo: this.state.url,
+                description: description,
+                foto: foto,
                 likes: [],
                 comentarios: [],
                 createdAt: Date.now()
@@ -38,7 +38,7 @@ class CreatePost extends Component {
     }
     onImageUpload(url){
       this.setState({
-          url:url,
+          foto: url,
           mostrarCamara:false
       })
   }
@@ -55,12 +55,12 @@ class CreatePost extends Component {
             <>
                 <TextInput
                 placeholder='Descripcion'
-                onChangeText={text => this.setState({descripcionDelPosteo: text})}
-                value={this.state.descripcionDelPosteo}
+                onChangeText={text => this.setState({description: text})}
+                value={this.state.description}
                 keyboardType='default'
                 style={styles.input}
                 />
-                <TouchableOpacity onPress={()=> this.createPost(this.state.descripcion, this.state.foto )}>
+                <TouchableOpacity onPress={()=> this.createPost(this.state.description, this.state.foto )}>
                     <Text>Enviar post</Text>
                 </TouchableOpacity>
             </>

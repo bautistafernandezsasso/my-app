@@ -39,11 +39,11 @@ class Comments extends Component {
         return (
             <View style={styles.container}>
 
-                <View style={styles.inferior}>
+                <View >
                     {this.state.comentarios == 0 ?
 
                         <View>
-                            <Text style= {styles.aviso}> Aún no hay comentarios. </Text>
+                            <Text> Aún no hay comentarios. </Text>
                         </View>
                         :
                         <FlatList
@@ -73,31 +73,14 @@ class Comments extends Component {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'rgb(234,252,255)',
+        backgroundColor: 'rgb(16, 146, 201)',
         flex: 1
     },
-    superior: {
-        backgroundColor: 'rgb(94, 171, 194)',
-        padding: 10,
-        marginBottom: 15,
-        flexDirection: 'row',
-        alignItems: 'center'
-    },
-    inferior:{
-        backgroundColor: 'rgb(94, 171, 194)',
-        borderRadius: 10,
-        padding: 15,
-        margin: 10
-    },
-    aviso: {
-        fontSize: 13,
-        marginTop: 10,
-    },
+   
     comentarios: {
         backgroundColor: 'rgb(16, 146, 201)',
         fontSize: 14,
         margin: 8,
-        borderRadius: 10,
         textAlign: 'left',
         padding: 8
     },
@@ -114,11 +97,11 @@ const styles = StyleSheet.create({
     boton: {
         fontSize: 14,
         margin: 10,
-        backgroundColor: 'rgb(94, 171, 194)',
+        backgroundColor: 'rgb(16, 146, 201)',
         borderRadius: 10,
         textAlign: 'center',
         padding: 5,
-        borderColor: 'rgb(234,252,255)',
+        borderColor: 'rgb(16, 146, 201)',
         borderWidth: 2,
     }
 })
